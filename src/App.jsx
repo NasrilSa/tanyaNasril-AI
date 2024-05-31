@@ -29,7 +29,7 @@ function App() {
       </span>
 
       <div className="flex fixed bottom-0 justify-center w-screen bg-[#1e1e1e]">
-        <form className="flex gap-4 py-2 rounded-[50px] px-2 bg-slate-800 text-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-green-500 my-2 md:w-11/12 lg:w-9/12">
+        <form className="flex gap-4 py-2 rounded-[50px] px-2 bg-slate-800 text-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-green-500 mb-4 md:w-11/12 lg:w-9/12">
           <input
             type="text"
             placeholder="ketik permintaan disini"
