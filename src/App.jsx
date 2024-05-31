@@ -6,9 +6,11 @@ import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 function App() {
   const [data, setData] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const handleSubmit = async () => {
     const ai = await requestToGroqAI(content.value);
     setData(ai);
+    setInputValue("");
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -40,6 +42,8 @@ function App() {
             type="text"
             placeholder="ketik permintaan disini"
             autoComplete="off"
+            value={inputValue} // Bind nilai input dengan state inputValue
+            onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
             className="py-2 px-4 text-md w-full border-none outline-none bg-slate-800"
             id="content"
