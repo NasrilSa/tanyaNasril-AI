@@ -27,7 +27,7 @@ function App() {
           onClick={handleSubmit}
           className="bg-green-700 py-2 px-4 font-bold text-white rounded-[50px] hover:bg-green-500"
         >
-          ⭡
+          ↑
         </button>
       </form>
 
