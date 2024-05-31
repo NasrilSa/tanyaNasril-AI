@@ -15,11 +15,19 @@ function App() {
       <h1 className="text-3xl text-green-400 font-extrabold mb-2 flex">
         tanyaNasril-AI
       </h1>
-      {data ? (
-        <SyntaxHighlight language="swift" style={darcula} wrapLongLines={true}>
-          {data}
-        </SyntaxHighlight>
-      ) : null}
+
+      <span className="mb-10">
+        {data ? (
+          <SyntaxHighlight
+            language="swift"
+            style={darcula}
+            wrapLongLines={true}
+          >
+            {data}
+          </SyntaxHighlight>
+        ) : null}
+      </span>
+
       <div className="flex fixed bottom-0 justify-center w-screen bg-[#1e1e1e]">
         <form className="flex gap-4 py-2 rounded-[50px] px-2 bg-slate-800 text-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-green-500 my-2 w-9/12">
           <input
