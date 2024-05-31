@@ -10,6 +10,12 @@ function App() {
     const ai = await requestToGroqAI(content.value);
     setData(ai);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent default behavior (form submission)
+      handleSubmit();
+    }
+  };
   return (
     <main className="flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto">
       <h1 className="text-3xl text-green-400 font-extrabold mb-2 flex">
@@ -34,6 +40,7 @@ function App() {
             type="text"
             placeholder="ketik permintaan disini"
             autoComplete="off"
+            onKeyDown={handleKeyDown}
             className="py-2 px-4 text-md w-full border-none outline-none bg-slate-800"
             id="content"
           />
