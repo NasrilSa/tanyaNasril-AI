@@ -34,7 +34,7 @@ function App() {
 
       {data ? null : (
         <h3 className="text-white font-bold mb-1">
-          <span className="mr-1 text-red-600">{typeEffect}👋</span>
+          <span className="mr-1 text-red-500">{typeEffect}👋</span>
           ask anything here
         </h3>
       )}
