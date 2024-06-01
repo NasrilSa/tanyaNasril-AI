@@ -4,6 +4,7 @@ import { requestToGroqAI } from "./utils/groq";
 import { Light as SyntaxHighlight } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { auto } from "groq-sdk/_shims/registry.mjs";
 
 function App() {
   const [data, setData] = useState("");
@@ -34,19 +35,26 @@ function App() {
       {data ? null : (
         <h3 className="text-white font-bold mb-1">
           <span className="mr-1 text-red-600">{typeEffect}👋</span>
-          welcome, ask anything here
+          ask anything here
         </h3>
       )}
       {data ? null : (
-        <p className=" text-gray-600 font-bold text-xs">
+        <p className=" text-gray-600 font-bold text-xs ">
           Copyright 2024 | Nasril ilham Sa{" "}
         </p>
       )}
 
       {data ? (
-        <SyntaxHighlight language="swift" style={darcula} wrapLongLines={true}>
-          {data}
-        </SyntaxHighlight>
+        <span className="mb-4">
+          <SyntaxHighlight
+            language="swift"
+            style={darcula}
+            wrapLongLines={true}
+            customStyle={{ background: auto }}
+          >
+            {data}
+          </SyntaxHighlight>
+        </span>
       ) : null}
 
       <div className="flex fixed bottom-0 justify-center w-screen bg-[#1e1e1e]">
