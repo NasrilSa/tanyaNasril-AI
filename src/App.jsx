@@ -3,6 +3,7 @@ import "./App.css";
 import { requestToGroqAI } from "./utils/groq";
 import { Light as SyntaxHighlight } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 function App() {
   const [data, setData] = useState("");
@@ -18,11 +19,28 @@ function App() {
       handleSubmit();
     }
   };
+  const [typeEffect] = useTypewriter({
+    words: [
+      "Halo",
+      "こんにちは",
+      "bonjour",
+      "안녕하세요",
+      "ٱلسَّلَامُ عَلَيْكُمْ",
+      "Привет",
+    ],
+    typeSpeed: 100,
+    deleteSpeed: 40,
+    loop: true,
+  });
   return (
     <main className="flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto">
       <h1 className="text-3xl text-green-400 font-extrabold mb-2 flex">
         tanyaNasril-AI
       </h1>
+      <h3 className="text-white  font-bold">
+        <span className="mr-1 text-red-600">{typeEffect}👋</span>
+        welcome, ask anything here
+      </h3>
 
       <span className="mb-10">
         {data ? (
@@ -42,7 +60,7 @@ function App() {
             type="text"
             placeholder="ketik permintaan disini"
             autoComplete="off"
-            value={inputValue} // Bind nilai input dengan state inputValue
+            value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
             className="py-2 px-4 text-md w-full border-none outline-none bg-slate-800"
