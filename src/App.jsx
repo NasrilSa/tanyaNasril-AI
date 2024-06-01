@@ -27,12 +27,12 @@ function App() {
   });
   return (
     <main className="flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto">
-      <h1 className="text-3xl text-green-400 font-extrabold mb-2 flex">
+      <h1 className="text-3xl text-green-400 font-extrabold mb-1 flex">
         tanyaNasril-AI
       </h1>
 
       {data ? null : (
-        <h3 className="text-white font-bold">
+        <h3 className="text-white font-bold mb-1">
           <span className="mr-1 text-red-600">{typeEffect}👋</span>
           welcome, ask anything here
         </h3>
