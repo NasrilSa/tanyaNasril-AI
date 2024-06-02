@@ -16,16 +16,17 @@ function App() {
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent default behavior (form submission)
+      event.preventDefault();
       handleSubmit();
     }
   };
   const [typeEffect] = useTypewriter({
     words: ["Halo", "こんにちは", "bonjour", "안녕하세요", "مرحبا", "Привет"],
-    typeSpeed: 100,
-    deleteSpeed: 40,
+    typeSpeed: 80,
+    deleteSpeed: 50,
     loop: true,
   });
+
   return (
     <main className="flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto">
       <h1 className="text-3xl text-green-400 font-extrabold mb-1 flex">
@@ -34,8 +35,13 @@ function App() {
 
       {data ? null : (
         <h3 className="text-white font-bold mb-1">
-          <span className="mr-1 text-red-500">{typeEffect}👋</span>
-          ask anything here
+          <span className=" text-red-500 ">
+            {typeEffect}
+            <span>
+              <Cursor cursorStyle="|" />
+            </span>
+          </span>
+          👋ask anything here
         </h3>
       )}
       {data ? null : (
