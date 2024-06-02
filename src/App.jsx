@@ -33,7 +33,7 @@ function App() {
         tanyaNasril-AI
       </h1>
 
-      {data ? null : (
+      {/* {data ? null : (
         <h3 className="text-white font-bold mb-1">
           <span className=" text-red-500 ">
             {typeEffect}
@@ -48,7 +48,7 @@ function App() {
         <p className=" text-gray-600 font-bold text-xs ">
           Copyright 2024 | Nasril ilham Sa{" "}
         </p>
-      )}
+      )} */}
 
       {data ? (
         <span className="mb-4">
