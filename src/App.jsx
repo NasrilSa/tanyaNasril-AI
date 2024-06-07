@@ -1,25 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { requestToGroqAI } from "./utils/groq";
 import { Light as SyntaxHighlight } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import { auto } from "groq-sdk/_shims/registry.mjs";
+import { css } from "@emotion/react";
+import { ClipLoader } from "react-spinners";
 
 function App() {
   const [data, setData] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async () => {
+    setIsLoading(true);
     const ai = await requestToGroqAI(content.value);
     setData(ai);
     setInputValue("");
+    setIsLoading(false);
   };
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
       handleSubmit();
     }
   };
+
   const [typeEffect] = useTypewriter({
     words: ["Halo", "こんにちは", "bonjour", "안녕하세요", "مرحبا", "Привет"],
     typeSpeed: 80,
@@ -27,13 +34,19 @@ function App() {
     loop: true,
   });
 
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
+
   return (
     <main className="flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto">
       <h1 className="text-3xl text-green-400 font-extrabold mb-1 flex">
         tanyaNasril-AI
       </h1>
 
-      {/* {data ? null : (
+      {isLoading || data ? null : (
         <h3 className="text-white font-bold mb-1">
           <span className=" text-red-500 ">
             {typeEffect}
@@ -44,24 +57,44 @@ function App() {
           👋ask anything here
         </h3>
       )}
-      {data ? null : (
+      {isLoading || data ? null : (
         <p className=" text-gray-600 font-bold text-xs ">
           Copyright 2024 | Nasril ilham Sa{" "}
         </p>
-      )} */}
-
+      )}
       {data ? (
         <span className="mb-4">
           <SyntaxHighlight
             language="swift"
             style={darcula}
             wrapLongLines={true}
-            customStyle={{ background: auto }}
+            customStyle={{ background: "auto" }}
           >
             {data}
           </SyntaxHighlight>
         </span>
       ) : null}
+      <div className="mb-4">
+        {isLoading ? (
+          <ClipLoader
+            color="#ffffff"
+            loading={isLoading}
+            css={override}
+            size={50}
+          />
+        ) : (
+          data && (
+            <SyntaxHighlight
+              language="swift"
+              style={darcula}
+              wrapLongLines={true}
+              customStyle={{ background: "auto" }}
+            >
+              {data}
+            </SyntaxHighlight>
+          )
+        )}
+      </div>
 
       <div className="flex fixed bottom-0 justify-center w-screen bg-[#1e1e1e]">
         <form className="flex gap-4 py-2 rounded-[50px] px-2 bg-slate-800 text-white transition duration-300 ease-in-out transform hover:shadow-lg hover:shadow-green-500 mb-4 md:w-11/12 lg:w-9/12">
